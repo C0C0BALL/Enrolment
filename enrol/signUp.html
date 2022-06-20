@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        *{font-family: 'Jua', sans-serif;}
+        body{padding:0px;margin:0px}
+        .main {
+            width: 290px;
+            height: 360px;
+            position:absolute;
+            top:30%;
+            left:50%;
+            margin:-150px 0px 0px -200px;
+            background-color: rgb(245, 214, 174);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid lightgrey;
+            border-radius: 5px;
+        }
+
+        .logo {
+            margin-top: 0px;
+            margin-bottom: 40px;
+        }
+
+        #btn {
+            width: 200px;
+            background-color: rgb(252, 146, 146);
+            border-color: transparent;
+            color: white;
+        }
+
+        #login {
+            width: 200px;
+            background-color: rgb(224, 52, 52);
+            border-color: transparent;
+            color: white;
+        }
+
+        .account {
+            display: block;
+            width: 193px;
+            margin-bottom: 3px;
+            padding: 3px;
+            border: 1px solid lightgray;
+            border-radius: 3px;
+        }
+
+        #alert {
+            border-color: transparent;
+        }
+    </style>
+    <script>
+        function submit_chk(myForm){
+            let name=user_id.value
+            let reg1=/^[a-zA-Z]{6,10}$/
+            let pw=user_pw.value
+            let reg2=/^(?=.*?[A-Za-z])(?=.*?[#?!@$ %^&*-]).{6,10}$/
+            if(!reg1.test(name) && reg2.test(pw)){
+                alert('입력하신 아이디가 형식에 맞지 않습니다. 다시 입력해주세요!')
+                location.reload()
+                return false
+            }
+            else if(reg1.test(name) && !reg2.test(pw)){
+                alert('입력하신 비밀번호가 형식에 맞지 않습니다. 다시 입력해주세요!')
+                location.reload()
+                return false
+            }
+            else if(!reg1.test(name) && !reg2.test(pw)){
+                alert('입력하신 아이디와 비밀번호가 형식에 맞지 않습니다. 다시 입력해주세요!')
+                location.reload()
+                return false
+            }
+        }
+        function reset_chk(myForm){}
+        function openWin(){
+            let popup=window.open('/')
+        }
+    </script>
+</head>
+<body onload="document.f1.user_id.focus()">
+    <div class="main">
+        <h1 class="logo"> 회원가입 </h1>
+        <div class="container">
+        <form action="/register" method="post" name="f1" onsubmit="return submit_chk(this);" onreset="return reset_chk(this);">
+                <p>
+                    <input type="text" name="user_id" id="user_id" class="account" placeholder="ID"/>
+                </p>
+                <p>
+                    <input type="password" name="user_pw" id="user_pw" class="account" placeholder="PW"/>
+                </p>
+                <p>
+                    <input type="text" name="user_name" id="user_name" class="account" placeholder="NAME"/>
+                </p>
+                <p><input type="submit" value="회원가입" id="btn"/></p>
+                <p><input type="reset" value="가입취소" id="btn"/></p>
+        </form>
+        <p><button id="login" onclick="openWin()">로그인</button></p>
+        </div>
+    </div>
+    
+</body>
+</html>

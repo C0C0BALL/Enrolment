@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수강 현황</title>
+    <% students=arr[0] %>
+    <% enroldata=arr[1] %>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        *{font-family: 'Jua', sans-serif;}
+    </style>
+</head>
+<body>
+    <h1>수강 현황</h1><hr>
+    <form action="/admin/status" method="get">
+        <input type="submit" value="모두 보기">
+    </form>
+    <form action="/admin/status/user" method="get">
+    <p><input type="text" name="userid" id="userid" placeholder="검색할 ID">
+    <input type="submit" value="확인"></p>
+    </form>
+    <div id="div1">
+        <%if(students.length==0){%>
+            <h3>수강중인 학생이 없습니다.</h3>
+        <%} else{%>
+            <%for(let i of students){%>
+            <h3><%=i.user_name%>님의 수강신청 내역</h3>
+            <table border="1">
+                <tr><th>수강과목
+                    <%let count=0%>
+                    <%for(let j of enroldata){%>
+                        <%if(j.user_id==i.user_id){%>
+                            <tr><td><%=j.subject_name%>
+                            <%count++%>
+                            <%}%>
+                        <%}%>
+            </table>
+            <%if(count==0){%>
+                <h4 style="color:red">수강중인 과목이 없습니다.</h4>
+                <%}%>
+            <%}%>
+            <br><br>
+        <%}%>
+    </div>
+</body>
+</html>

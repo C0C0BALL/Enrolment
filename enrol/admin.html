@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        *{font-family: 'Jua', sans-serif;}
+    </style>
+    <script>
+        function openWin1(){
+            let popup=window.open('/admin/subject')
+        }
+        function openWin2(){
+            let popup=window.open('/admin/status')
+        }
+    </script>
+</head>
+<body>
+    <h1>관리자 전용 페이지</h1>
+    <button onclick="openWin1()">교과목 관리</button> 
+    <button onclick="openWin2()">수강 현황</button> 
+</body>
+</html>

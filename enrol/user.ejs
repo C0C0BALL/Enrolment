@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        *{font-family: 'Jua', sans-serif;}
+    </style>
+    <% data = results[0] %>
+    <script>
+        alert('로그인에 성공했습니다. 환영합니다!');
+        history.pushState(null,null,'/user')
+    </script>
+    <title><%=data.id%></title>
+    </head>
+    <body>
+        <h1><%=data.user_name%>님 환영합니다!</h1><hr>
+        <h2>회원 정보</h2>
+        <p>아이디 : <%=data.user_id%></p>
+        <p>비밀번호 : <%=data.user_pw%></p>
+        <p>사용자명 : <%=data.user_name%></p>
+        <form action="/user/enrol" method="get">
+            <input type="hidden" name="user_id" id="user_id" value="<%=data.user_id%>">
+            <input type="hidden" name="user_name" id="user_name" value="<%=data.user_name%>">
+            <input type="submit" value="수강신청으로 이동">
+        </form>
+    </body>
+</html>

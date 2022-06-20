@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수강신청</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        *{font-family: 'Jua', sans-serif;}
+        #full{
+            width: 1200px;
+            height: 600px;
+        }
+        #div1{
+            width:400px;
+            height:600px;
+            float:left;
+        }
+        #div2{
+            width:400px;
+            height:600px;
+            float:left;
+        }
+        #div3{
+            width:400px;
+            height:600px;
+            float:left;
+        }
+    </style>
+    <% id=arr[0]%>
+    <% name=arr[1]%>
+    <% all_subjects=arr[2]%>
+    <% enrol_subjects=arr[3]%>
+    <% grade=arr[4]%>
+</head>
+<body>
+    <h1><%=name%>님의 수강신청</h1><hr>
+    <div id="full">
+        <div id="div1">
+            <h2>수강신청 가능한 과목 목록</h2>
+            <table border="1">
+                <tr><th>과목명<th>학점
+            <% for(let i of all_subjects){ %>
+                <tr><td><%=i.subject_name%><td style="text-align:center"><%=i.subject_grade%>
+            <%}%>
+            </table>
+            <% if(all_subjects.length==0){ %> 
+                수강신청 가능한 과목이 없습니다.
+            <%}%>
+        </div>
+        <div id="div2">
+            <h2>신청한 교과목</h2>
+            
+            <% if(enrol_subjects.length==0) { %> 
+                신청한 과목이 없습니다.
+            <%} else{ %>
+                <table border="1">
+                    <tr><th>과목명
+                <% for(let i of enrol_subjects){ %>
+                    <tr><td><%=i.subject_name%>
+                <%}%>
+                </table>
+            <%}%>
+            <br>수강하는 학점 :
+            <% for(let i of grade){ %>
+                <% if(i.gradesum==null) {%> 
+                    0
+                <% }else {%>
+                    <tr><td><%=i.gradesum%>
+                <%}%>
+            <%}%>
+        </div>
+        <div id="div3">
+            <h2>수강신청 정정</h2>
+            <form method="post">
+                <input type="hidden" name="user_id" value="<%=id%>">
+                <input type="hidden" name="user_name" value="<%=name%>">
+                <input type="text" name="subject_name" placeholder="과목명">
+                <input type="submit" value="추가" formaction="/user/enrol/add">
+                <input type="submit" value="삭제" formaction="/user/enrol/delete">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

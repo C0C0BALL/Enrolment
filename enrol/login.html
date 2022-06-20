@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        *{font-family: 'Jua', sans-serif;}
+        body{padding:0px;margin:0px}
+        .main {
+            width: 290px;
+            height: 340px;
+            position:absolute;
+            top:30%;
+            left:50%;
+            margin:-150px 0px 0px -200px;
+            background-color: rgb(211, 240, 198);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid lightgrey;
+            border-radius: 5px;
+        }
+
+        .logo {
+            margin-top: 0px;
+            margin-bottom: 40px;
+        }
+
+        #login {
+            width: 200px;
+            background-color: skyblue;
+            border-color: transparent;
+            color: white;
+        }
+
+        #register{
+            width: 200px;
+            background-color: rgb(36, 158, 206);
+            border-color: transparent;
+            color: white;
+        }
+
+        .account {
+            display: block;
+            width: 193px;
+            margin-bottom: 3px;
+            padding: 3px;
+            border: 1px solid lightgray;
+            border-radius: 3px;
+        }
+
+        #alert {
+            border-color: transparent;
+        }
+    </style>
+    <script>
+        function submit_chk(myForm){
+            
+        }
+        function reset_chk(myForm){
+
+        }
+        function openWin(){
+            let popup=window.open('/signUp')
+        }
+    </script>
+</head> 
+<body onload="document.f.user_id.focus()">
+    <div class="main">
+        <h1 class="logo">동아대학교 수강신청</h1>
+        <div class="container">
+            <form action="/login" method="post" name="f" onsubmit="return sumbit_chk(this);" onreset="return reset_chk(this);">
+                <p><input type="text" name="user_id" id="user_id" class="account" placeholder="ID"></p>
+                <p><input type="password" name="user_pw" id="user_pw" class="account" placeholder="PW"></p>
+                <input type="submit" class="account" id="login" value="로그인">
+            </form>
+            <p><button id="register" onclick="openWin()">회원가입</button></p>
+        </div>
+    </div>
+</body>
+</html>
